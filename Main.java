@@ -1,25 +1,29 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.PriorityQueue;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int N = Integer.parseInt(br.readLine());
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        int testCase = Integer.parseInt(br.readLine());
 
-        for (int i=0; i<N; i++) {
-            int x = Integer.parseInt(br.readLine());
+        for (int i=0; i<testCase; i++) {
+            Map<String, Integer> map = new HashMap<>();
+            
+            int res = 1;
+            int n = Integer.parseInt(br.readLine());
 
-            if (x == 0) {
-                if(minHeap.isEmpty()) {
-                    System.out.println(0);
-                } 
-                else System.out.println(minHeap.poll());
-            } 
-            else minHeap.add(x);
+            for (int j=0; j<n; j++) {
+                String[] input = br.readLine().split(" ");
+                String clothType = input[1];
+                map.put(clothType, map.getOrDefault(clothType, 0) + 1);
+            }
+
+            for (int cnt : map.values()) {
+                res *= (cnt + 1);
+            }
+
+            System.out.println(res - 1);
         }
     }
 }
