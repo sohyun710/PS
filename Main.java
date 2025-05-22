@@ -2,28 +2,57 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static List<Integer>[] graph;
+    static boolean[] visited;
+
     public static void main(String[] args) throws IOException {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int testCase = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(st.nextToken()); 
+        int M = Integer.parseInt(st.nextToken());  
 
-        for (int i=0; i<testCase; i++) {
-            Map<String, Integer> map = new HashMap<>();
-            
-            int res = 1;
-            int n = Integer.parseInt(br.readLine());
+        graph = new ArrayList[N + 1];   // 인접리스트 사용 -> 1 ~ N
+        visited = new boolean[N + 1]; 
 
-            for (int j=0; j<n; j++) {
-                String[] input = br.readLine().split(" ");
-                String clothType = input[1];
-                map.put(clothType, map.getOrDefault(clothType, 0) + 1);
+        for (int i = 1; i <= N; i++) {
+            graph[i] = new ArrayList<>(); 
+        }
+
+        for (int i = 0; i < M; i++) {
+            st = new StringTokenizer(br.readLine());
+            int u = Integer.parseInt(st.nextToken());
+            int v = Integer.parseInt(st.nextToken());
+
+            graph[u].add(v);
+            graph[v].add(u);
+        }
+
+        int count = 0;  // 연결요소 개수
+
+        for (int i = 1; i <= N; i++) { 
+            if (!visited[i]) {
+                bfs(i);
+                count++;
             }
+        }
+        System.out.println(count);
+    }
 
-            for (int cnt : map.values()) {
-                res *= (cnt + 1);
+    static void bfs(int start) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(start);
+        visited[start] = true;
+
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            for (int next : graph[node]) {   
+                if (!visited[next]) {
+                    visited[next] = true;
+                    queue.offer(next);
+                }
             }
-
-            System.out.println(res - 1);
         }
     }
 }
