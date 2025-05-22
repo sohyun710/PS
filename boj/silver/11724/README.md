@@ -1,3 +1,18 @@
 ## [11724] 연결 요소의 개수
 
-https://www.acmicpc.net/problem/11724
+https://www.acmicpc.net/problem/11724  
+
+### 문제 유형
+
+인접리스트, bfs
+
+### 풀이 방법 도출
+- 인접리스트에 요소 추가-> 무방향 그래프이므로 graph[u].add(v), graph[v].add(u)
+- 1 ~ N까지 노드 순회-> 방문하지 않은 노드면 bfs 수행하고, 연결 요소 개수 증가
+
+### 참고
+
+### 시간 복잡도
+O(N+M)
+
+노드개수+간선개수

@@ -1,6 +1,7 @@
 ## [9375] 패션왕 신해빈
 
-https://www.acmicpc.net/problem/9095
+https://www.acmicpc.net/problem/9095  
+
 
 ### 문제 유형
 
