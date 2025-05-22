@@ -1,11 +1,5 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     static List<Integer>[] graph;
@@ -16,14 +10,14 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int N = Integer.parseInt(st.nextToken());   // 정점개수 N
-        int M = Integer.parseInt(st.nextToken());   // 간선개수 M
+        int N = Integer.parseInt(st.nextToken()); 
+        int M = Integer.parseInt(st.nextToken());  
 
-        graph = new ArrayList[N + 1];   // 인접리스트 배열 -> 1~N번까지 사용하므로 N+1 크기
-        visited = new boolean[N + 1];   // 방문여부 배열 -> 0번 인덱스는 미사용
+        graph = new ArrayList[N + 1];   // 인접리스트 사용 -> 1 ~ N
+        visited = new boolean[N + 1]; 
 
         for (int i = 1; i <= N; i++) {
-            graph[i] = new ArrayList<>();  // 정점에 대해 ArrayList 객체 할당
+            graph[i] = new ArrayList<>(); 
         }
 
         for (int i = 0; i < M; i++) {
@@ -35,9 +29,9 @@ public class Main {
             graph[v].add(u);
         }
 
-        int count = 0;
+        int count = 0;  // 연결요소 개수
 
-        for (int i = 1; i <= N; i++) {   // bfs 탐색
+        for (int i = 1; i <= N; i++) { 
             if (!visited[i]) {
                 bfs(i);
                 count++;
@@ -53,9 +47,9 @@ public class Main {
 
         while (!queue.isEmpty()) {
             int node = queue.poll();
-            for (int next : graph[node]) {   // 현재 노드와 연결된 모든 노드들 탐색
+            for (int next : graph[node]) {   
                 if (!visited[next]) {
-                    visited[next] = true;  // 미방문노드 방문처리
+                    visited[next] = true;
                     queue.offer(next);
                 }
             }
