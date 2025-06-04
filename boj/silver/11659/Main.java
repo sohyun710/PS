@@ -4,13 +4,12 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
-
+    
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
         StringTokenizer st = new StringTokenizer(br.readLine());
-
-        int N = Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(st.nextToken());  
         int M = Integer.parseInt(st.nextToken());
 
         int[] arr = new int[N + 1];
@@ -19,21 +18,18 @@ public class Main {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        int[] arrSum = new int[N + 1];
+        int[] sum = new int[N + 1];   // 구간합 배열
         for (int i = 1; i <= N; i++) {
-            arrSum[i] = arrSum[i - 1] + arr[i];
+            sum[i] = sum[i - 1] + arr[i];
         }
 
         StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < M; i++) {
+        for (int m = 0; m < M; m++) {
             st = new StringTokenizer(br.readLine());
-            int start = Integer.parseInt(st.nextToken());
-            int end = Integer.parseInt(st.nextToken());
+            int i = Integer.parseInt(st.nextToken());
+            int j = Integer.parseInt(st.nextToken());
 
-            int sum = arrSum[end] - arrSum[start - 1];
-
-            sb.append(sum).append("\n");
+            sb.append(sum[j] - sum[i - 1]).append("\n");
         }
         System.out.print(sb.toString());
     }
