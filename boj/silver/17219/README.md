@@ -3,6 +3,7 @@
 https://www.acmicpc.net/problem/17219
 
 **문제 유형**
+
 해시맵
 
 **풀이 방법 도출**
