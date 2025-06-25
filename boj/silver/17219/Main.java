@@ -1,27 +1,32 @@
-import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Integer> numbers = new ArrayList<>();
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        String[] firstLine = br.readLine().split(" ");
-        int N = Integer.parseInt(firstLine[0]);  
-        int M = Integer.parseInt(firstLine[1]);
-
-        Map<String, String> map = new HashMap<>(N); 
-
-        for (int i = 0; i < N; i++) {
-            String[] line = br.readLine().split(" ");
-            map.put(line[0], line[1]);
+        // 입력 99개 받을 때까지 반복
+        while (scanner.hasNextInt() && numbers.size() < 100) {
+            numbers.add(scanner.nextInt());
         }
 
-        for (int i = 0; i < M; i++) {
-            String password = br.readLine();
-            System.out.println(map.get(password)); 
+        List<Integer> sorted = new ArrayList<>(numbers);
+        sorted.sort(Collections.reverseOrder());
+
+        Map<Integer, Integer> rankMap = new HashMap<>();
+        int rank = 1;
+        for (int i = 0; i < sorted.size(); i++) {
+            int num = sorted.get(i);
+            if (!rankMap.containsKey(num)) {
+                rankMap.put(num, rank);
+            }
+            rank++;
         }
-        
-        br.close();
+
+        for (int num : numbers) {
+            System.out.println(rankMap.get(num) + ": " + num);
+        }
+
+        scanner.close();
     }
 }
