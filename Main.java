@@ -6,22 +6,35 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String[] firstLine = br.readLine().split(" ");
-        int N = Integer.parseInt(firstLine[0]);  
-        int M = Integer.parseInt(firstLine[1]);
+        int N = Integer.parseInt(br.readLine());
 
-        Map<String, String> map = new HashMap<>(N); 
-
-        for (int i = 0; i < N; i++) {
-            String[] line = br.readLine().split(" ");
-            map.put(line[0], line[1]);
-        }
-
-        for (int i = 0; i < M; i++) {
-            String password = br.readLine();
-            System.out.println(map.get(password)); 
-        }
+        String[] token = br.readLine().split(" ");
+        int[] arr = new int[N];
         
+        for (int i = 0; i < N; i++) {
+            arr[i] = Integer.parseInt(token[i]);
+        }
+
+        Set<Integer> set = new HashSet<>();     // 중복제거
+        for (int num : arr) {
+            set.add(num);
+        }
+
+        List<Integer> sorted = new ArrayList<>(set);    // 리스트로 변환하여 정렬
+        Collections.sort(sorted);
+
+        Map<Integer, Integer> compressed = new HashMap<>();
+        int cnt = 0;
+        for (int num : sorted) {
+            compressed.put(num, cnt++);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int num: arr) {
+            sb.append(compressed.get(num)).append(" ");
+        }
+        System.out.println(sb.toString());
+    
         br.close();
     }
 }
