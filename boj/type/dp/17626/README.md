@@ -2,7 +2,7 @@
 
 https://www.acmicpc.net/problem/17626  
 
-**문제 유형**
+### 문제 유형
 
 dp
 
