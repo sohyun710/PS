@@ -6,8 +6,6 @@ https://www.acmicpc.net/problem/17626
 
 dp
 
-<br>
-
 #### 풀이 방법 도출
 
 - dp[i]
@@ -17,8 +15,6 @@ dp
 
 - 점화식 dp[i] = min(dp[i - j^2] + 1)
   - j^2 <= i인 모든 j에 대해 탐색
-
-<br>
 
 #### 시간 복잡도
 
