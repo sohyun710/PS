@@ -19,6 +19,7 @@ public class Main {
             }
             else maxHeap.add(num);
         }
+        
         br.close();
     }
 }
