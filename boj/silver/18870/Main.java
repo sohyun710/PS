@@ -24,9 +24,9 @@ public class Main {
         Collections.sort(sorted);
 
         Map<Integer, Integer> compressed = new HashMap<>();
-        int cnt = 0;
+        int idx = 0;
         for (int num : sorted) {
-            compressed.put(num, cnt++);
+            compressed.put(num, idx++);
         }
 
         StringBuilder sb = new StringBuilder();

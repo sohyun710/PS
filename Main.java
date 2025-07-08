@@ -1,42 +1,40 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String[] firstLine = br.readLine().split(" ");
-        int K = Integer.parseInt(firstLine[0]);
-        int N = Integer.parseInt(firstLine[1]);
+        int N = Integer.parseInt(br.readLine());
 
-        int[] arr = new int[K];
-        int max = 0;
-
-        for (int i = 0; i < K; i++) {
-            arr[i] = Integer.parseInt(br.readLine());
-            max = Math.max(max, arr[i]);
+        String[] token = br.readLine().split(" ");
+        int[] arr = new int[N];
+        
+        for (int i = 0; i < N; i++) {
+            arr[i] = Integer.parseInt(token[i]);
         }
 
-        long left = 1;
-        long right = max;
-        long result = 0;
-
-        while (left <= right) {
-            long mid = (left + right) / 2;
-
-            long cnt = 0;
-            for (int num : arr) {
-                cnt += num / mid;
-            }
-
-            if (cnt >= N) {
-                result = mid;
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
+        Set<Integer> set = new HashSet<>();     // 중복제거
+        for (int num : arr) {
+            set.add(num);
         }
 
-        System.out.println(result);
+        List<Integer> sorted = new ArrayList<>(set);    // 리스트로 변환하여 정렬
+        Collections.sort(sorted);
+
+        Map<Integer, Integer> compressed = new HashMap<>();
+        int idx = 0;
+        for (int num : sorted) {
+            compressed.put(num, idx++);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int num: arr) {
+            sb.append(compressed.get(num)).append(" ");
+        }
+        System.out.println(sb.toString());
+    
+        br.close();
     }
-}
+} 
