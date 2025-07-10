@@ -27,12 +27,11 @@ public class Main {
             }
             
             for (int dice = 1; dice <= 6; dice++) {
+
                 int nextPos = pos + dice;
-                
                 if (nextPos > 100) continue;
                 
-                // 이동
-                if (teleport.containsKey(nextPos)) {
+                if (teleport.containsKey(nextPos)) {   // 사다리
                     nextPos = teleport.get(nextPos);
                 }
                 
@@ -43,7 +42,6 @@ public class Main {
                 }
             }
         }
-        
         return -1;   // 컴파일에러 방지 - 문제는 성공하는 입력만 제시
     }
     
