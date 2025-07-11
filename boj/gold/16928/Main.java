@@ -22,19 +22,18 @@ public class Main {
             int pos = current[0];
             int moves = current[1];
             
-            if (pos == end) {
+            if (pos == end) {   // 종료조건
                 return moves;
             }
             
             for (int dice = 1; dice <= 6; dice++) {
-
                 int nextPos = pos + dice;
+                
                 if (nextPos > 100) continue;
                 
                 if (teleport.containsKey(nextPos)) {   // 사다리
                     nextPos = teleport.get(nextPos);
                 }
-                
                 if (!visited[nextPos]) {
                     visited[nextPos] = true;
                     int[] nextState = {nextPos, moves + 1};
