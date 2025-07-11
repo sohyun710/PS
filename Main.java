@@ -10,7 +10,7 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
         int[] arr = new int[N+1];
         
-        for (int i=0; i<N; i++) {
+        for (int i = 0; i < N; i++) {
             arr[i+1] = Integer.parseInt(br.readLine()); 
         }
 
@@ -19,7 +19,7 @@ public class Main {
         int rid = Math.round(N * 0.15f);
         int sum = 0;
 
-        for (int i=rid+1; i< N-rid+1; i++) {
+        for (int i = rid+1; i < N-rid+1; i++) {
             sum += arr[i];
         }
         
