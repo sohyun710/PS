@@ -2,6 +2,8 @@
 
 https://www.acmicpc.net/problem/18110
 
+<br>
+
 **문제 유형**
 
 수학
