@@ -25,7 +25,7 @@ public class Main {
         for (int i = 0; i < N; i++) {
             String line = br.readLine();
             for (int j = 0; j < M; j++) {
-                map[i][j] = line.charAt(j) - '0';   // 문자 1 → 정수 1
+                map[i][j] = line.charAt(j) - '0';   // 문자 1 → 정수 1 파싱
             }
         }
 
