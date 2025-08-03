@@ -5,24 +5,20 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        int[][] arr = new int[N][2];
+        int[][] arr = new int[N][3];
 
         for (int i=0; i<N; i++) {
             String[] input = br.readLine().split(" ");
-            int weight = Integer.parseInt(input[0]);
-            int height = Integer.parseInt(input[1]);
-            arr[i][0] = weight;
-            arr[i][1] = height;
+            arr[i][0] = Integer.parseInt(input[0]);
+            arr[i][1] = Integer.parseInt(input[1]);
         }
 
         for (int i=0; i<N; i++) {
-            int a = arr[i][0];
-            int b = arr[i][1];
-            int num = 1;
+            int rank = 1;
             for (int j=0; j<N; j++){
-                if (a < arr[j][0] && b < arr[j][1]) num++;
+                if (arr[i][0] < arr[j][0] && arr[i][1] < arr[j][1]) rank++;
             }
-            arr[i][2] = num;
+            arr[i][2] = rank;
         }
 
         for (int i=0; i<N; i++) {
