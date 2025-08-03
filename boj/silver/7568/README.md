@@ -7,6 +7,7 @@ https://www.acmicpc.net/problem/7568
 **문제 유형**
 
 완전탐색
+
 <br>
 
 **풀이 방법 도출**
