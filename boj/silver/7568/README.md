@@ -5,6 +5,7 @@ https://www.acmicpc.net/problem/7568
 <br>
 
 **문제 유형**
+
 완전탐색
 <br>
 
