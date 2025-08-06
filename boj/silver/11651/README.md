@@ -20,6 +20,6 @@ https://www.acmicpc.net/problem/11651
 
 <br>
 
-**시간 복잡도**
+**시간 복잡도g**
 
 O(N log N)
