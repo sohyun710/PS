@@ -23,4 +23,4 @@ https://www.acmicpc.net/problem/4949
 
 **시간 복잡도**
 
-O(N^2)
+O(N)
